@@ -8,6 +8,7 @@ function App() {
 
   const [inputValue, setInputValue] = useState("qui")
   const [initialPosts, setInitialPost] = useState(blogPosts)
+  const [singleInputValue, setSingleInputValue] = useState(null)
 
 
   const handleSubmit = (event) => {
@@ -24,11 +25,11 @@ function App() {
 
   };
 
-  const handleSubmitUpdate = (event , postId) => {
+  const handleSubmitUpdate = (event, postId, newTitle) => {
 
     event.preventDefault();
     if (inputValue.trim() !== "") {
-      updatePost(postId, inputValue )
+      updatePost(postId, newTitle)
     }
 
 
@@ -65,7 +66,7 @@ function App() {
 
           (
 
-            <ListItemmComponent key={curPost.id} curPost={curPost} deletePost={deletePost} updatePost={updatePost}  handleSubmit={handleSubmitUpdate}/>)
+            <ListItemmComponent key={curPost.id} curPost={curPost} deletePost={deletePost} updatePost={updatePost} handleSubmitUpdate={handleSubmitUpdate} />)
 
 
           )}
