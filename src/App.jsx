@@ -24,6 +24,16 @@ function App() {
 
   };
 
+  const handleSubmitUpdate = (event , postId) => {
+
+    event.preventDefault();
+    if (inputValue.trim() !== "") {
+      updatePost(postId, inputValue )
+    }
+
+
+  };
+
   const deletePost = (postId) => {
     console.log(postId);
 
@@ -32,16 +42,16 @@ function App() {
     setInitialPost(newPostsArr)
   }
 
-  const updatePost = (postId , newTitle) => {
+  const updatePost = (postId, newTitle) => {
 
-    const updatePostsArr = initialPosts.map((curPost) => {
-      if (curPost.id === postId) {
-        return { ...curPost, titolo: {newTitle} };
-      }
-      return curPost;
-    })
+    const updatePostsArr = initialPosts.map((curPost) => curPost.id === postId ? { ...curPost, titolo: newTitle } : curPost);
+
+    console.log(updatePostsArr);
     setInitialPost(updatePostsArr)
   }
+
+
+
 
 
   return (
@@ -55,7 +65,7 @@ function App() {
 
           (
 
-            <ListItemmComponent key={curPost.id} curPost={curPost} deletePost={deletePost} updatePost={updatePost} />)
+            <ListItemmComponent key={curPost.id} curPost={curPost} deletePost={deletePost} updatePost={updatePost}  handleSubmit={handleSubmitUpdate}/>)
 
 
           )}

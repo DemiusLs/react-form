@@ -1,4 +1,4 @@
-const FormComponent = ({ handleSubmit, setInputValue ,inputValue }) => {
+const FormComponent = ({ handleSubmit, setInputValue, inputValue }) => {
 
     return (
         <form action="" className='d-flex flex-column py-5' onSubmit={handleSubmit}>
